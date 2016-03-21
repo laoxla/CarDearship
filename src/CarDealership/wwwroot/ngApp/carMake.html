@@ -1,0 +1,30 @@
+﻿
+<div class="searchArea">
+    <input ng-model="carSearch" type="text" placeholder="Search" />
+
+</div>
+<br /><br />
+
+<div class="makes">
+    <select ng-model="controller.selectedCarMake"
+            ng-options="carMake.name for carMake in controller.carMakes"
+            ng-change="controller.getCars()"></select>
+
+    <div ng-repeat="car in controller.makeCars |filter:{carMakeId:controller.selectedCarMake.id}">
+        <a ng-click="controller.getCarDetail(car.id)">{{car.shortDescription}}</a>
+    </div>
+</div>
+<script type="text/ng-template" id="detailListModal.html">
+    <img src="{{modalController.carDetails.imageUrl}}" />
+    <div>{{modalController.carDetails.shortDescription}}</div>
+    <div>${{modalController.carDetails.price}}</div>
+    <div>{{modalController.carDetails.fullDescription}}</div>
+
+</script>
+
+
+
+
+
+
+
